@@ -1,0 +1,25 @@
+<div class="page-header">
+    <h2>
+        {{article.name}}
+    </h2>
+</div>
+
+<div class="row" >
+    <div class="col-xs-12 col-sm-3" *ngFor="let album of article.albums">
+        <div class="thumbnail">
+            <img data-[src]="article.image" alt="thumb-img" class="img-responsive" />
+            <div class="caption">
+
+                <cite>{{album.id}}</cite>
+                <h4>{{album.title}}</h4>
+                <p class="bg-success">
+                    {{album.year}}
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="text-primary" [innerHTML]="article.description">
+</p>

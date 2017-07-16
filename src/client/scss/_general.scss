@@ -1,0 +1,8 @@
+.general-atag {
+    color: orange;
+    text-decoration: none;
+    &:hover, &:focus {
+        color: green;
+        font-weight: bold;
+    }
+}

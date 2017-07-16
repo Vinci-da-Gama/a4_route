@@ -5,19 +5,19 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AboutModule } from './about/about.module';
-import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-
+// import { HomeModule } from './home/home.module';
+import { ArticlesModule } from './artists/articals.module';
+import { AboutModule } from './about/about.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, SharedModule.forRoot()],
-  declarations: [AppComponent],
-  providers: [{
-    provide: APP_BASE_HREF,
-    useValue: '<%= APP_BASE %>'
-  }],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, ArticlesModule, SharedModule.forRoot()],
+	providers: [{
+		provide: APP_BASE_HREF,
+		useValue: '<%= APP_BASE %>'
+	}],
+	bootstrap: [AppComponent]
 
 })
 export class AppModule { }

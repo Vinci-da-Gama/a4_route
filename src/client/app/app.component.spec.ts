@@ -13,7 +13,8 @@ import {
   RouterTestingModule
 } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+// import { HomeComponent } from './home/home.component';
+import { ArticalListComponent } from './artists/artical-list/artical-list.component';
 import { AboutComponent } from './about/about.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -23,7 +24,7 @@ export function main() {
   describe('App component', () => {
 
     let config: Route[] = [
-      { path: '', component: HomeComponent },
+      { path: '', component: ArticalListComponent },
       { path: 'about', component: AboutComponent }
     ];
     beforeEach(() => {
@@ -31,7 +32,7 @@ export function main() {
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, ToolbarComponent,
           NavbarComponent, AppComponent,
-          HomeComponent, AboutComponent],
+          ArticalListComponent, AboutComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]
@@ -54,7 +55,7 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>'
+  template: '<angular-tunes></angular-tunes>'
 })
 
 class TestComponent {

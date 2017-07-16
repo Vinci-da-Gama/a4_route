@@ -1,7 +1,7 @@
 {
     "name": "a4_aot_routes_and_navigation",
     "version": "0.0.1",
-    "description": "Modular starter project for Angular_4 with statically typed build and AoT compilation",
+    "description": "angular4 routes and navigation",
     "repository": {
         "url": "https://github.com/Vinci-da-Gama/a4_route"
     },

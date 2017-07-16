@@ -1,0 +1,18 @@
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of epitome">
+                <td>{{item.id}}</td>
+                <td>
+                    <a class="general-atag">{{item.name}}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
