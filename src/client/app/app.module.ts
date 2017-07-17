@@ -10,9 +10,16 @@ import { SharedModule } from './shared/shared.module';
 import { ArticlesModule } from './artists/articals.module';
 import { AboutModule } from './about/about.module';
 
+
 @NgModule({
-	declarations: [AppComponent],
-	imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, ArticlesModule, SharedModule.forRoot()],
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule, HttpModule,
+		AppRoutingModule, ArticlesModule,
+		AboutModule, SharedModule.forRoot()
+	],
 	providers: [{
 		provide: APP_BASE_HREF,
 		useValue: '<%= APP_BASE %>'

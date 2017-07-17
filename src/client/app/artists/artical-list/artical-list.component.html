@@ -16,3 +16,7 @@
         </tbody>
     </table>
 </div>
+
+<a-list *ngIf="state === 'article-list-comp'" (listToDetails)="showDetails($event)">
+</a-list>
+<a-details *ngIf="state === 'article-details-comp'" (detailsToList)="showList($event)"></a-details>

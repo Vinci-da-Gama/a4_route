@@ -11,15 +11,15 @@ describe('App', () => {
   });
 
   it('should have <nav>', () => {
-    expect(element(by.css('angular-tunes sd-navbar nav')).isPresent()).toEqual(true);
+    expect(element(by.css('angular-tunes sd-navbar div')).isPresent()).toEqual(true);
   });
 
-  it('should have correct nav text for Home', () => {
-    expect(element(by.css('angular-tunes sd-navbar nav a:first-child')).getText()).toEqual('HOME');
+  it('should have correct nav text for Artical_List', () => {
+    expect(element(by.css('angular-tunes sd-navbar div a:first-child')).getText()).toEqual('Artical_List');
   });
 
   it('should have correct nav text for About', () => {
-    expect(element(by.css('angular-tunes sd-navbar nav a:nth-child(2)')).getText()).toEqual('ABOUT');
+    expect(element(by.css('angular-tunes sd-navbar div a:nth-child(2)')).getText()).toEqual('ABOUT');
   });
 
 });

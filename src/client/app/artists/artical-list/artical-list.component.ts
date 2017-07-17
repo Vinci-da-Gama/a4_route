@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ArtistService } from '../artical-services/articals.service';
 import { ArticleSynopsisInterface } from '../article-interface/article-synopsis.interface';
 
@@ -11,6 +11,7 @@ import { ArticleSynopsisInterface } from '../article-interface/article-synopsis.
 })
 export class ArticalListComponent implements OnInit {
 
+	private state: string = 'article-list-comp';
 	private epitome: ArticleSynopsisInterface[];
 
 	constructor(articleService: ArtistService) {
@@ -20,4 +21,11 @@ export class ArticalListComponent implements OnInit {
 
 	ngOnInit() { }
 
+	showDetails(switchState: string) {
+		this.state = switchState;
+	}
+
+	showList(switchState: string) {
+		this.state = switchState;
+	}
 }

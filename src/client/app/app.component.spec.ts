@@ -4,58 +4,61 @@ import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
 import {
-  async
+	async
 } from '@angular/core/testing';
 import {
-  Route
+	Route
 } from '@angular/router';
 import {
-  RouterTestingModule
+	RouterTestingModule
 } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 // import { HomeComponent } from './home/home.component';
 import { ArticalListComponent } from './artists/artical-list/artical-list.component';
 import { AboutComponent } from './about/about.component';
+import { AlistComponent } from './Components/alist/alist.component';
+import { AdsComponent } from './Components/adetails/adetails.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 export function main() {
 
-  describe('App component', () => {
+	describe('App component', () => {
 
-    let config: Route[] = [
-      { path: '', component: ArticalListComponent },
-      { path: 'about', component: AboutComponent }
-    ];
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [TestComponent, ToolbarComponent,
-          NavbarComponent, AppComponent,
-          ArticalListComponent, AboutComponent],
-        providers: [
-          { provide: APP_BASE_HREF, useValue: '/' }
-        ]
-      });
-    });
+		let config: Route[] = [
+			{ path: '', component: ArticalListComponent },
+			{ path: 'about', component: AboutComponent }
+		];
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				imports: [FormsModule, RouterTestingModule.withRoutes(config)],
+				declarations: [TestComponent, ToolbarComponent,
+					NavbarComponent, AppComponent,
+					ArticalListComponent, AboutComponent,
+					AlistComponent, AdsComponent],
+				providers: [
+					{ provide: APP_BASE_HREF, useValue: '/' }
+				]
+			});
+		});
 
-    it('should build without a problem',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let compiled = fixture.nativeElement;
+		it('should build without a problem',
+			async(() => {
+				TestBed
+					.compileComponents()
+					.then(() => {
+						let fixture = TestBed.createComponent(TestComponent);
+						let compiled = fixture.nativeElement;
 
-            expect(compiled).toBeTruthy();
-          });
-      }));
-  });
+						expect(compiled).toBeTruthy();
+					});
+			}));
+	});
 }
 
 @Component({
-  selector: 'test-cmp',
-  template: '<angular-tunes></angular-tunes>'
+	selector: 'test-cmp',
+	template: '<angular-tunes></angular-tunes>'
 })
 
 class TestComponent {

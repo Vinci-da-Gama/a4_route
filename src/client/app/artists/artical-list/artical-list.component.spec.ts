@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { ArticalListComponent } from './artical-list.component';
+import { AlistComponent } from '../../Components/alist/alist.component';
+import { AdsComponent } from '../../Components/adetails/adetails.component';
 
 export function main() {
 	describe('ArticalListComponent', () => {
@@ -10,7 +12,11 @@ export function main() {
 
 		beforeEach(async(() => {
 			TestBed.configureTestingModule({
-				declarations: [ArticalListComponent]
+				declarations: [
+					ArticalListComponent,
+					AlistComponent,
+					AdsComponent
+				]
 			})
 			.compileComponents();
 		}));

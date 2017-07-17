@@ -6,10 +6,12 @@ import { ArticalListComponent } from './artical-list/artical-list.component';
 import { ArticalDetailsComponent } from './artical-details/artical-details.component'; */
 
 import { SharedModule } from '../shared/shared.module';
+import { AlistModule } from '../Components/alist/alist.module';
+import { AdsModule } from '../Components/adetails/adetails.module';
 // import { ArtistService } from './artical-services/articals.service';
 
 @NgModule({
-	imports: [ArticalListRoutingModule, SharedModule],
+	imports: [ArticalListRoutingModule, SharedModule, AlistModule, AdsModule],
 	declarations: [ArticalListComponent],
 	exports: [ArticalListComponent] /* ,
 	providers: [ArtistService] */
