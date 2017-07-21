@@ -10,7 +10,9 @@
             <tr *ngFor="let item of epitome">
                 <td>{{item.id}}</td>
                 <td>
-                    <a class="general-atag">{{item.name}}</a>
+                    <a class="general-atag" [routerLink]="['/details', item.id]">
+                        {{item.name}} -- Click Here to Go Details Page
+                    </a>
                 </td>
             </tr>
         </tbody>

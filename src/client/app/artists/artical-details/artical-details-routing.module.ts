@@ -5,7 +5,7 @@ import { ArticalDetailsComponent } from './artical-details.component';
 @NgModule({
 	imports: [
 		RouterModule.forChild([
-			{ path: '', component: ArticalDetailsComponent }
+			{ path: 'details/:aId', component: ArticalDetailsComponent }
 		])
 	],
 	exports: [RouterModule]

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute } from '@angular/router';
 import { ArticleInterface } from '../article-interface/article.interface';
 import { ArtistService } from '../artical-services/articals.service';
 
@@ -9,16 +11,24 @@ import { ArtistService } from '../artical-services/articals.service';
 	styleUrls: ['./artical-details.component.css'],
 	providers: [ArtistService]
 })
-export class ArticalDetailsComponent implements OnInit {
+export class ArticalDetailsComponent implements OnInit, OnDestroy {
 
-	private articleId: string = '630662ea-1c7d-4208-99fd-ba3afec20f0c';
+	private articleId: string;
 	private article: ArticleInterface;
+	private paramSubscription: Subscription;
 
-	constructor(private articalService: ArtistService) {
-		this.article = articalService.getArticle(this.articleId);
-		console.log('18 -- this.article: ', this.article);
+	constructor(private articalService: ArtistService, private activeRoute: ActivatedRoute) {
+		console.log('21 -- route snapshot aId:', activeRoute.snapshot.params['aId']);
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.paramSubscription = this.activeRoute.params.subscribe((params) => {
+			this.article = this.articalService.getArticle(params['aId']);
+		});
+	}
+
+	ngOnDestroy() {
+		this.paramSubscription.unsubscribe();
+	}
 
 }

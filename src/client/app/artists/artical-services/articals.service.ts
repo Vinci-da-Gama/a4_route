@@ -11,7 +11,7 @@ export class ArtistService {
 
 	// constructor() { }
 
-	private StaticArtists: Response | Object = {
+	private StaticArtists: Response | any = {
 		"630662ea-1c7d-4208-99fd-ba3afec20f0c": {
 			"id": "630662ea-1c7d-4208-99fd-ba3afec20f0c",
 			"name": "Amon Tobin",
