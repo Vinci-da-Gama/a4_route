@@ -18,7 +18,7 @@ export class ArticalDetailsComponent implements OnInit, OnDestroy {
 	private paramSubscription: Subscription;
 
 	constructor(private articalService: ArtistService, private activeRoute: ActivatedRoute) {
-		console.log('21 -- route snapshot aId:', activeRoute.snapshot.params['aId']);
+		console.log('21 -- activeRoute snapshot aId:', activeRoute.snapshot.params['aId']);
 	}
 
 	ngOnInit() {

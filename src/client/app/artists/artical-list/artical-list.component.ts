@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ArtistService } from '../artical-services/articals.service';
-import { ArticleSynopsisInterface } from '../article-interface/article-synopsis.interface';
+import { ArticleInterface } from '../article-interface/article.interface';
 
 @Component({
 	moduleId: module.id,
@@ -12,14 +12,16 @@ import { ArticleSynopsisInterface } from '../article-interface/article-synopsis.
 export class ArticalListComponent implements OnInit {
 
 	private state: string = 'article-list-comp';
-	private epitome: ArticleSynopsisInterface[];
+	private epitome: ArticleInterface[];
 
-	constructor(articleService: ArtistService) {
-		this.epitome = articleService.getArticlesSynopsis();
-		console.log('19 -- this.epitome: ', this.epitome);
+	constructor(private articleService: ArtistService) {}
+
+	ngOnInit() {
+		this.articleService.getArticlesSynopsis()
+		.subscribe((res: ArticleInterface[]) => {
+			this.epitome = res;
+		});
 	}
-
-	ngOnInit() { }
 
 	showDetails(switchState: string) {
 		this.state = switchState;

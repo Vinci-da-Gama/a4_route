@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-// import { ArticleInterface } from '../article-interface/article.interface';
-// import { Http, Response } from '@angular/http';
-import { Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
+import { ArticleInterface } from '../article-interface/article.interface';
 
-/* import { Observable } from 'rxjs/Observable';
-import '../../operators'; */
+import { Observable } from 'rxjs/Observable';
+import '../../operators';
 
 @Injectable()
 export class ArtistService {
 
-	// constructor() { }
+	private baseUrl = 'https://a4-test-db-14june2017.firebaseio.com/';
+	private jsonFile = 'artists.json';
+	// private StaticArtists: Object | any;
+
+	constructor(private http: Http) { }
 
 	private StaticArtists: Response | any = {
 		"630662ea-1c7d-4208-99fd-ba3afec20f0c": {
@@ -68,19 +71,51 @@ export class ArtistService {
 		}
 	};
 
-	getArticlesSynopsis() {
-		return Object.keys(this.StaticArtists)
-			.map((articleId: string) => {
-				const artist = this.StaticArtists[articleId];
-				return {
-					id: articleId,
-					name: artist.name
-				}
+	getArticlesSynopsis(): Observable<ArticleInterface[]> {
+		return this.http.get(`${this.baseUrl}${this.jsonFile}`)
+			.map((res: Response) => {
+				let articles: ArticleInterface[] = this.convertFibResponseToArray(res.json());
+				this.StaticArtists = Object.assign({}, articles);
+				console.log('79 -- this.StaticArtists is: ', this.StaticArtists);
+				return articles;
 			})
+			.catch(this.handleError);
 	}
 
 	getArticle(aId: string) {
 		return this.StaticArtists[aId];
+	}
+
+	private convertFibResponseToArray(res: Object | any) {
+		return Object.keys(res)
+			.map((key: string) => {
+				const currentObj = res[key];
+				return {
+					fID: key,
+					id: currentObj.id,
+					name: currentObj.name,
+					description: currentObj.description,
+					image: currentObj.image,
+					albums: currentObj.albums
+				}
+			})
+			.sort((a: ArticleInterface, b: ArticleInterface) => {
+				a.name.localeCompare(b.name);
+			});
+	}
+
+	private handleError(error: Response | any) {
+		// In a real world app, you might use a remote logging infrastructure
+		let errMsg: string;
+		if (error instanceof Response) {
+			const body = error.json() || '';
+			const err = body.error || JSON.stringify(body);
+			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+		} else {
+			errMsg = error.message ? error.message : error.toString();
+		}
+		console.error(errMsg);
+		return Observable.throw(errMsg);
 	}
 
 }
