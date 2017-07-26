@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
 // import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
 import { ArticlesModule } from './artists/articals.module';
 import { AboutModule } from './about/about.module';
 
@@ -16,9 +17,9 @@ import { AboutModule } from './about/about.module';
 		AppComponent
 	],
 	imports: [
-		BrowserModule, HttpModule,
-		AppRoutingModule, ArticlesModule,
-		AboutModule, SharedModule.forRoot()
+		BrowserModule, HttpModule, AppRoutingModule,
+		LoginModule, ArticlesModule, AboutModule,
+		SharedModule.forRoot()
 	],
 	providers: [{
 		provide: APP_BASE_HREF,

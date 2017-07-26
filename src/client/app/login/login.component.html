@@ -1,0 +1,32 @@
+<div class="row mt-1em">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <form role="form" novalidate name="loginForm" #loginform="ngForm">
+
+            <div class="form-group">
+                <label for="loginformUsername">
+                    UserName
+                </label>
+                <input type="text" class="form-control" [(ngModel)]="Person.username" id="loginformUsername" name="LoginForm_UserName" placeholder="Input Username"
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="loginformPassword">
+                    Password
+                </label>
+                <input type="password" class="form-control" [(ngModel)]="Person.password" id="loginformPassword" name="LoginForm_Password"
+                    placeholder="Input Password" />
+            </div>
+
+        </form>
+
+        <div class="row-fluid text-right">
+            <!-- loginform.form.valid -->
+            <button type="submit" class="btn btn-primary" (click)="loginformSubmit()" [disabled]="Person.usernam === '' || Person.password ===''">
+                Submit
+            </button>
+        </div>
+
+
+    </div>
+</div>
