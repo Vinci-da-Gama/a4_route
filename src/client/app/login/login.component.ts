@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PersonInterface } from './Person.interface';
 import { LoginService } from './login.service';
@@ -12,18 +12,27 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-	Person: PersonInterface = {
+	private Person: PersonInterface = {
 		username: '',
 		password: ''
 	}
 
-	constructor(private router: Router, private loginService: LoginService) {}
+	constructor(private activeRoute: ActivatedRoute, private router: Router, private loginService: LoginService) { }
 
 	ngOnInit() { }
 
 	loginformSubmit() {
-		if(this.loginService.checkLoggedIn(this.Person.username, this.Person.password)) {
-			this.router.navigate(['/artistsList']);
+		if (this.loginService.checkLoggedIn(this.Person.username, this.Person.password)) {
+			const destUrl = this.activeRoute.snapshot.queryParams['destination'] || '/';
+			console.log('27 -- destUrl is: ' + destUrl);
+			switch (destUrl) {
+				case '/':
+					this.router.navigate(['/artistsList']);
+					break;
+				default:
+					this.router.navigateByUrl(destUrl);
+					break;
+			}
 		}
 	}
 

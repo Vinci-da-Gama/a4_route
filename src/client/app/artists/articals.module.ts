@@ -8,12 +8,12 @@ import { ArticalDetailsComponent } from './artical-details/artical-details.compo
 import { SharedModule } from '../shared/shared.module';
 import { AlistModule } from '../Components/alist/alist.module';
 import { AdsModule } from '../Components/adetails/adetails.module';
-// import { ArtistService } from './artical-services/articals.service';
+import { ArtistService } from './artical-services/articals.service';
 
 @NgModule({
 	imports: [ArticalListRoutingModule, ArticalDetailsRoutingModule, SharedModule, AlistModule, AdsModule],
 	declarations: [ArticalListComponent, ArticalDetailsComponent],
-	exports: [ArticalListComponent, ArticalDetailsComponent]/* ,
-	providers: [ArtistService] */
+	exports: [ArticalListComponent, ArticalDetailsComponent],
+	providers: [ArtistService]
 })
 export class ArticlesModule { }

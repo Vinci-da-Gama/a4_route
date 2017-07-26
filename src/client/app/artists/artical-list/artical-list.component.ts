@@ -6,8 +6,7 @@ import { ArticleInterface } from '../article-interface/article.interface';
 	moduleId: module.id,
 	selector: 'artical-list',
 	templateUrl: 'artical-list.component.html',
-	styleUrls: ['artical-list.component.css'],
-	providers: [ArtistService]
+	styleUrls: ['artical-list.component.css']
 })
 export class ArticalListComponent implements OnInit {
 

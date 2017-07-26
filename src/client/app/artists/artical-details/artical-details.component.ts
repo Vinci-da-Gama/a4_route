@@ -1,20 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleInterface } from '../article-interface/article.interface';
+import { AlbumsWithIdInterface } from '../../artists/article-interface/albums-id.interface';
 import { ArtistService } from '../artical-services/articals.service';
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-artical-details',
 	templateUrl: './artical-details.component.html',
-	styleUrls: ['./artical-details.component.css'],
-	providers: [ArtistService]
+	styleUrls: ['./artical-details.component.css']
 })
 export class ArticalDetailsComponent implements OnInit, OnDestroy {
 
+	private article: AlbumsWithIdInterface;
+
 	private articleId: string;
-	private article: ArticleInterface;
 	private paramSubscription: Subscription;
 
 	constructor(private articalService: ArtistService, private activeRoute: ActivatedRoute) {
